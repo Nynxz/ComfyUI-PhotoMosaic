@@ -1,6 +1,6 @@
 # ComfyUI-PhotoMosaic
 
-Three ComfyUI nodes that turn an image into a **photomosaic** — a grid of
+ComfyUI nodes that turn an image into a **photomosaic** — a grid of
 tile images chosen so their colours approximate the source. Point at a folder
 of images (your saved Discord avatars, a screenshot dump, anything) and rebuild
 a logo or photo out of them.
@@ -14,6 +14,11 @@ a logo or photo out of them.
   any upstream `IMAGE` batch instead of a directory.
 - **PhotoMosaic** — takes an `IMAGE` plus a `tile_library` and produces the
   mosaic `IMAGE`.
+- **PhotoMosaic Dominant Colors** — extract the top N colours from an image
+  via median-cut quantization. Three output modes: `swatches` (N solid-fill
+  frames, frequency-ordered), `layers` (N frames each isolating one cluster),
+  or `quantized` (single posterized frame). Useful for simplifying a source
+  before mosaicking, or for generating a palette as an IMAGE batch.
 
 ## Quick start
 

@@ -2,6 +2,7 @@
 
 from comfy_api.latest import ComfyExtension, io
 
+from .nodes.dominant_colors import PhotoMosaicDominantColors
 from .nodes.load_tiles_directory import PhotoMosaicLoadTilesFromDirectory
 from .nodes.load_tiles_images import PhotoMosaicLoadTilesFromImages
 from .nodes.photomosaic import PhotoMosaicNode
@@ -13,6 +14,7 @@ class PhotoMosaicExtension(ComfyExtension):
             PhotoMosaicLoadTilesFromDirectory,
             PhotoMosaicLoadTilesFromImages,
             PhotoMosaicNode,
+            PhotoMosaicDominantColors,
         ]
 
 
