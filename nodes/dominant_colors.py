@@ -1,7 +1,6 @@
 """PhotoMosaic Dominant Colors — extract the top N colours from an image and
 emit them as an IMAGE batch. Output mode controls whether each frame is a
-solid-fill swatch, the per-cluster region of the source, or a single
-posterized version of the input.
+solid-fill swatch or the per-cluster region of the source.
 """
 
 from __future__ import annotations
@@ -20,9 +19,8 @@ class PhotoMosaicDominantColors(io.ComfyNode):
             display_name="PhotoMosaic Dominant Colors",
             category="PhotoMosaic",
             description=(
-                "Median-cut quantization of an image into its top N colours. "
-                "Use to simplify a source before mosaicking, or to produce a "
-                "palette as an IMAGE batch you can save/feed elsewhere."
+                "Median-cut quantization of an image into its top N colours, "
+                "emitted as an IMAGE batch you can save or feed elsewhere."
             ),
             inputs=[
                 io.Image.Input("image"),
@@ -35,14 +33,13 @@ class PhotoMosaicDominantColors(io.ComfyNode):
                 ),
                 io.Combo.Input(
                     "mode",
-                    options=["swatches", "layers", "quantized"],
+                    options=["swatches", "layers"],
                     default="swatches",
                     tooltip=(
                         "swatches: N solid-fill frames at source resolution, "
                         "ordered by frequency (most-common first).\n"
                         "layers: N frames, each one shows only the source "
-                        "pixels assigned to that colour (others black).\n"
-                        "quantized: single frame, source posterized to N colours."
+                        "pixels assigned to that colour (others black)."
                     ),
                 ),
                 io.Int.Input(
@@ -103,10 +100,6 @@ class PhotoMosaicDominantColors(io.ComfyNode):
             for i, original_idx in enumerate(idx_order):
                 mask = quant_idx == original_idx
                 out[i][mask] = rgb[i]
-        elif mode == "quantized":
-            quant_idx = np.asarray(quant, dtype=np.int32)
-            full_palette = np.array(palette_full, dtype=np.uint8).reshape(256, 3)
-            out = full_palette[quant_idx][None, ...]
         else:
             raise ValueError(f"unknown mode: {mode!r}")
 

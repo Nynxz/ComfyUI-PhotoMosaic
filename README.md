@@ -5,6 +5,8 @@ tile images chosen so their colours approximate the source. Point at a folder
 of images (your saved Discord avatars, a screenshot dump, anything) and rebuild
 a logo or photo out of them.
 
+![PhotoMosaic example](assets/example.jpg)
+
 ## Nodes
 
 - **PhotoMosaic Load Tiles (Directory)** — scans a folder, square-crops/resizes
@@ -15,10 +17,10 @@ a logo or photo out of them.
 - **PhotoMosaic** — takes an `IMAGE` plus a `tile_library` and produces the
   mosaic `IMAGE`.
 - **PhotoMosaic Dominant Colors** — extract the top N colours from an image
-  via median-cut quantization. Three output modes: `swatches` (N solid-fill
-  frames, frequency-ordered), `layers` (N frames each isolating one cluster),
-  or `quantized` (single posterized frame). Useful for simplifying a source
-  before mosaicking, or for generating a palette as an IMAGE batch.
+  via median-cut quantization. Two output modes: `swatches` (N solid-fill
+  frames, frequency-ordered) or `layers` (N frames each isolating one
+  cluster). Useful for generating a palette as an IMAGE batch, or as the
+  input to a mosaic.
 
 ## Quick start
 
@@ -68,9 +70,3 @@ A 1024×1024 source with `grid_width = 80`, `output_tile_size = 32` produces a
 
 Drop this folder into `ComfyUI/custom_nodes/` and restart. The only deps are
 `numpy`, `Pillow`, and `torch`, all of which ComfyUI already ships.
-
-## Ideas
-
-- ComfyUI logo built from Discord profile pictures.
-- A self-portrait built from screenshots of your past generations.
-- A landscape built from a season of frames pulled out of a single video.
