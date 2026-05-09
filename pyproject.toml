@@ -1,0 +1,25 @@
+[project]
+name = "comfyui-photomosaic"
+version = "0.0.1"
+description = "ComfyUI nodes for building a photomosaic from an image and a folder (or batch) of tile images."
+authors = [{ name = "Nynxz", email = "contact@nynxz.com" }]
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = []
+dependencies = []
+dynamic = ["dependencies"]
+
+
+[project.urls]
+Repository = "https://github.com/Nynxz/ComfyUI-PhotoMosaic"
+BugTracker = "https://github.com/Nynxz/ComfyUI-PhotoMosaic/issues"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.comfy]
+PublisherId = "nynxz"
+DisplayName = "PhotoMosaic"
+Icon = "https://avatars.githubusercontent.com/u/60878743?v=4"
+Tags = ["mosaic", "photomosaic", "image", "fun"]
+Repository = "https://github.com/Nynxz/ComfyUI-PhotoMosaic"
