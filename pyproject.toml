@@ -3,6 +3,7 @@ name = "comfyui-photomosaic"
 version = "0.0.1"
 description = "ComfyUI nodes for building a photomosaic from an image and a folder (or batch) of tile images."
 authors = [{ name = "Nynxz", email = "contact@nynxz.com" }]
+license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = []
